@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var uuid= require('uuid/V4');
 
-var personaCollecction =[];
+var personaCollection =[];
 
 var personaStruct= {
     id:0,
@@ -13,7 +13,7 @@ var personaStruct= {
 
 }
 
-personaCollecction.push(
+personaCollection.push(
 Object.assign(
     {},
     personaStruct,
@@ -27,13 +27,13 @@ Object.assign(
 );
 
 router.get('/', (req,res, next)=>{
-res.status(200).json(personaCollecction);
+res.status(200).json(personaCollection);
 });
 
 router.get('/:id', (req,res,nect)=>{
     if(!this.report.params.id) return next();
     var id = req.params.id;
-    var persona = persona.personasCollection.filter((e, i)=>{
+    var persona = persona.personaCollection.filter((e, i)=>{
         return (e.id === id);
     });
     
@@ -52,7 +52,7 @@ router.post('/', (req,res,next)=>{
         {id:uuid()},
         req.body
     );
-    personaCollecction.push(newPersona)
+    personaCollection.push(newPersona)
     res.status(403).json(newPersona);
 });
 
@@ -60,7 +60,7 @@ router.put('/:id', (req,res,next)=>{
     var id = req.params.id;
     var modifiedPersona = {};
     var originalPersona = {};
-    personasCollection = personasCollection.map((e, i)=>{
+    personaCollection = personaCollection.map((e, i)=>{
         if(e.id===id){
             originalPersona = Object.assign({}, e);
             return modifiedPersona =Object.assign({}, e, req.body);
@@ -73,7 +73,7 @@ router.put('/:id', (req,res,next)=>{
 router.delete('/:id', (req,res,next)=>{
     var id = req.params.id;
     var deletedPersona = {};
-    personasCollection = personasCollection.filter((e, i)=>{
+    personaCollection = personaCollection.filter((e, i)=>{
         if(e.id===id){
             deletedPersona = Object.assign({}, e)
             return false;
